@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Product } from './product/product.types';
+import { CatalogService } from './catalog/catalog.service';
+import { BasketService } from './basket/basket.service';
+import { APP_TITLE } from './app.module';
+import { SelectProductKey } from './select-product-key/select-product-key/select-product-key.component.types';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +12,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'zenika-ng-website';
+  
 }
+

@@ -1,0 +1,40 @@
+<!-- Extract to "src/app/app.component.html" -->
+  <header test-total class="p-4 mb-4 bg-light rounded-3">
+    <h1>{{ myAppName }}</h1>
+    <p>
+      Votre panier s'élève à
+      {{ total | currency }}
+    </p>
+    <p class="mb-0">
+      <a class="btn btn-primary btn-large" routerLink="/basket">Voir mon panier</a>
+    </p>
+  </header>
+
+  <h2 class="h4">Catalogue</h2>
+
+  <div class="row">
+    <app-select-product-key [(productKey)]="productKey" />
+  </div>
+
+  <div
+    class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4"
+    *ngIf="hasProductsInStock$ | async; else noProduct"
+  >
+    <ng-container
+      *ngFor="let product of products$ | async "
+    >
+      <app-product
+        *ngIf="product.stock > 0"
+        [product]="product"
+        (addToBasket)="increaseTotal($event)"
+      ></app-product>
+    </ng-container>
+  </div>
+
+  <ng-template #noProduct>
+    <p>Désolé, notre stock est vide !</p>
+  </ng-template>
+<!-- End of Extract to "src/app/app.component.html" -->
+
+
+        <app-footer />

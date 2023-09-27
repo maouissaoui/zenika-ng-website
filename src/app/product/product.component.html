@@ -1,0 +1,17 @@
+
+<div class="col">
+<div class="card h-100 text-center"
+   [ngClass]="{'text-bg-warning' : product.stock == 1 }">
+    <img test-img test-image class="card-img-top" [src]="product.photo" alt="Product image" />
+    <div test-desc class="card-header">
+      <small >{{ product.description }}</small>
+    </div>
+    <div class="card-body">
+      <h3 class="h6 card-title">
+        <a class="card-link" test-title>{{ product.title |  uppercase }}</a>
+      </h3>
+      <p class="card-text" test-price>{{ product.price | currency :  'EUR' : '€'}}</p>
+      <button class="btn btn-primary" (click)="ajoutAuPanier()">Ajoutez au panier</button>
+    </div>
+  </div>
+</div>
